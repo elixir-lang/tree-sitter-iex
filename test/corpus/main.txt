@@ -23,7 +23,8 @@ iex>
 (source
   (evaluation_block
     (prompt_line
-      (prompt))
+      (prompt)))
+  (evaluation_block
     (prompt_line
       (prompt))))
 
@@ -40,7 +41,8 @@ iex> send self(), :hello
   (evaluation_block
     (prompt_line
       (prompt)
-      (expression))
+      (expression)))
+  (evaluation_block
     (prompt_line
       (prompt)
       (expression))))
@@ -82,7 +84,8 @@ iex(1)> System.otp_release()
   (evaluation_block
     (prompt_line
       (prompt)
-      (expression))
+      (expression)))
+  (evaluation_block
     (prompt_line
       (prompt)
       (expression))
@@ -106,7 +109,8 @@ iex(1)> quote do
       (expression))
     (prompt_line
       (prompt)
-      (expression))
+      (expression)))
+  (evaluation_block
     (prompt_line
       (prompt)
       (expression))
