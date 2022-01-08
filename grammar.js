@@ -25,6 +25,13 @@ module.exports = grammar({
 
     expression: ($) => seq(ANYTHING, NEWLINE),
 
-    result: ($) => prec.right(repeat1(seq(token(prec(-1, ANYTHING)), NEWLINE))),
+    result: ($) =>
+      prec.right(
+        seq(sep1(token(prec(-1, ANYTHING)), NEWLINE), optional(NEWLINE))
+      ),
   },
 });
+
+function sep1(rule, separator) {
+  return seq(rule, repeat(seq(separator, rule)));
+}
