@@ -12,4 +12,4 @@ This grammar should be fairly complete. It could support more advanced iex synta
 
 Injecting [`elixir-lang/tree-sitter-elixir`](https://github.com/elixir-lang/tree-sitter-elixir):
 
-![iex highlights](docs/iex.png)
+<img src="docs/iex.png" width="400" />
