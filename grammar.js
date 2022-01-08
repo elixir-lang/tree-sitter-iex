@@ -18,10 +18,10 @@ module.exports = grammar({
       ),
 
     _default_prompt_line: ($) =>
-      seq(alias(/iex(\(\d+\))?>/, $.prompt), optional($.expression)),
+      seq(alias(/iex(\([^\)]+\)\d*)?>/, $.prompt), optional($.expression)),
 
     _cont_prompt_line: ($) =>
-      seq(alias(/\.\.\.(\(\d+\))?>/, $.prompt), optional($.expression)),
+      seq(alias(/\.\.\.(\([^\)]+\)\d*)?>/, $.prompt), optional($.expression)),
 
     expression: ($) => seq(ANYTHING, NEWLINE),
 
