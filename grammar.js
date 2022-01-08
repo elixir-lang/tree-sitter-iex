@@ -22,7 +22,6 @@ module.exports = grammar({
         token.immediate(">")
       ),
 
-    digit: ($) => /\d+/,
     expression: ($) => seq(ANYTHING, NEWLINE),
     result: ($) => token(prec(-1, ANYTHING)),
   },

@@ -121,10 +121,6 @@
         }
       ]
     },
-    "digit": {
-      "type": "PATTERN",
-      "value": "\\d+"
-    },
     "expression": {
       "type": "SEQ",
       "members": [
