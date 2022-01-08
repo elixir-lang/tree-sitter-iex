@@ -25,6 +25,6 @@ module.exports = grammar({
 
     expression: ($) => seq(ANYTHING, NEWLINE),
 
-    result: ($) => token(prec(-1, ANYTHING)),
+    result: ($) => prec.right(repeat1(seq(token(prec(-1, ANYTHING)), NEWLINE))),
   },
 });

@@ -121,13 +121,29 @@
       ]
     },
     "result": {
-      "type": "TOKEN",
+      "type": "PREC_RIGHT",
+      "value": 0,
       "content": {
-        "type": "PREC",
-        "value": -1,
+        "type": "REPEAT1",
         "content": {
-          "type": "PATTERN",
-          "value": "[^\\r\\n]+"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": -1,
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[^\\r\\n]+"
+                }
+              }
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\r?\\n"
+            }
+          ]
         }
       }
     }
