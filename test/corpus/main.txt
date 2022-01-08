@@ -220,12 +220,12 @@ iex(foo@127.0.0.1)1> "
       (expression))
     (result)))
 
-
 ================================================================================
 Prompt-like expression after prompt
 ================================================================================
 iex(1)> abs(1)>1
 false
+iex(1)> #(1)>
 
 --------------------------------------------------------------------------------
 
@@ -234,4 +234,8 @@ false
     (prompt_line
       (prompt)
       (expression))
-    (result)))
+    (result))
+  (evaluation_block
+    (prompt_line
+      (prompt)
+      (expression))))
