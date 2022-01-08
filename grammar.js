@@ -1,5 +1,5 @@
 const WHITE_SPACE = /[ \f\t\v]+/;
-const NEWLINE = /[\r?\n]/;
+const NEWLINE = /\r?\n/;
 const ANYTHING = /[^\r\n]+/;
 
 module.exports = grammar({
@@ -11,18 +11,26 @@ module.exports = grammar({
     source: ($) => repeat(choice($.evaluation_block, NEWLINE)),
 
     evaluation_block: ($) =>
-      prec.right(seq(repeat1($.prompt_line), optional(seq($.result, NEWLINE)))),
-
-    prompt_line: ($) => seq($.prompt, choice($.expression, NEWLINE)),
-
-    prompt: ($) =>
       seq(
-        choice("iex", "..."),
-        optional(seq(token.immediate(/\(\d+\)/))),
-        token.immediate(">")
+        alias($._default_prompt_line, $.prompt_line),
+        repeat(alias($._cont_prompt_line, $.prompt_line)),
+        optional($.result)
+      ),
+
+    _default_prompt_line: ($) =>
+      seq(
+        alias(/iex(\(\d+\))?>/, $.prompt),
+        optional($.expression)
+      ),
+
+    _cont_prompt_line: ($) =>
+      seq(
+        alias(/\.\.\.(\(\d+\))?>/, $.prompt),
+        optional($.expression)
       ),
 
     expression: ($) => seq(ANYTHING, NEWLINE),
+
     result: ($) => token(prec(-1, ANYTHING)),
   },
 });
