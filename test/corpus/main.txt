@@ -148,3 +148,54 @@ iex(1)> quote do
       (prompt)
       (expression))
     (result)))
+
+================================================================================
+Multi-line results
+================================================================================
+
+iex> quote do
+...>   Enum.map(x, &(&1 + 1))
+...> end
+{{:., [], [{:__aliases__, [alias: false], [:Enum]}, :map]}, [],
+ [
+   {:x, [if_undefined: :apply], Elixir},
+   {:&, [], [{:+, [context: Elixir, import: Kernel], [{:&, [], [1]}, 1]}]}
+ ]}
+iex(1)> IO.puts("Hello world")
+Hello world
+:ok
+
+--------------------------------------------------------------------------------
+
+(source
+  (evaluation_block
+    (prompt_line
+      (prompt)
+      (expression))
+    (prompt_line
+      (prompt)
+      (expression))
+    (prompt_line
+      (prompt)
+      (expression))
+    (result))
+  (evaluation_block
+    (prompt_line
+      (prompt)
+      (expression))
+    (result)))
+
+================================================================================
+Missing newline on a result
+================================================================================
+
+iex> x
+1
+--------------------------------------------------------------------------------
+
+(source
+  (evaluation_block
+    (prompt_line
+      (prompt)
+      (expression))
+    (result)))

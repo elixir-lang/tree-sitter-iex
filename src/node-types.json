@@ -43,6 +43,11 @@
     }
   },
   {
+    "type": "result",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "source",
     "named": true,
     "fields": {},
@@ -59,10 +64,6 @@
   },
   {
     "type": "prompt",
-    "named": true
-  },
-  {
-    "type": "result",
     "named": true
   }
 ]

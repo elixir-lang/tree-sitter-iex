@@ -121,14 +121,63 @@
       ]
     },
     "result": {
-      "type": "TOKEN",
+      "type": "PREC_RIGHT",
+      "value": 0,
       "content": {
-        "type": "PREC",
-        "value": -1,
-        "content": {
-          "type": "PATTERN",
-          "value": "[^\\r\\n]+"
-        }
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "TOKEN",
+                "content": {
+                  "type": "PREC",
+                  "value": -1,
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[^\\r\\n]+"
+                  }
+                }
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "PATTERN",
+                      "value": "\\r?\\n"
+                    },
+                    {
+                      "type": "TOKEN",
+                      "content": {
+                        "type": "PREC",
+                        "value": -1,
+                        "content": {
+                          "type": "PATTERN",
+                          "value": "[^\\r\\n]+"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "\\r?\\n"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
       }
     }
   },
