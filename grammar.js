@@ -27,8 +27,13 @@ module.exports = grammar({
 
     result: ($) =>
       prec.right(
-        seq(sep1(token(prec(-1, ANYTHING)), NEWLINE), optional(NEWLINE))
+        seq(
+          sep1(choice($.comment, token(prec(-1, ANYTHING))), NEWLINE),
+          optional(NEWLINE)
+        )
       ),
+
+    comment: ($) => seq("#", ANYTHING),
   },
 });
 

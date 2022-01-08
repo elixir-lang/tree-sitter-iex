@@ -1,0 +1,28 @@
+iex> self()
+# <- comment
+#     ^ ignore
+iex(1)> abs(1)>1
+# <- comment
+#         ^ ignore
+false
+# <- ignore
+iex(1)> #(1)>
+# <- comment
+#        ^ ignore
+iex(foo@127.0.0.1)1> send self(), :hello
+# ^ comment
+#          ^ comment
+#                 ^ comment
+#                      ^ ignore
+iex> quote do
+...>   Enum.map(x, &(&1 + 1))
+...> end
+# <- comment
+#     ^ ignore
+{{:., [], [{:__aliases__, [alias: false], [:Enum]}, :map]}, [],
+# <- ignore
+ [
+   {:x, [if_undefined: :apply], Elixir},
+   {:&, [], [{:+, [context: Elixir, import: Kernel], [{:&, [], [1]}, 1]}]}
+#   ^ ignore
+ ]}

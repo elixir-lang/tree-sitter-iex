@@ -130,15 +130,24 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "TOKEN",
-                "content": {
-                  "type": "PREC",
-                  "value": -1,
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "[^\\r\\n]+"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "comment"
+                  },
+                  {
+                    "type": "TOKEN",
+                    "content": {
+                      "type": "PREC",
+                      "value": -1,
+                      "content": {
+                        "type": "PATTERN",
+                        "value": "[^\\r\\n]+"
+                      }
+                    }
                   }
-                }
+                ]
               },
               {
                 "type": "REPEAT",
@@ -150,15 +159,24 @@
                       "value": "\\r?\\n"
                     },
                     {
-                      "type": "TOKEN",
-                      "content": {
-                        "type": "PREC",
-                        "value": -1,
-                        "content": {
-                          "type": "PATTERN",
-                          "value": "[^\\r\\n]+"
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "comment"
+                        },
+                        {
+                          "type": "TOKEN",
+                          "content": {
+                            "type": "PREC",
+                            "value": -1,
+                            "content": {
+                              "type": "PATTERN",
+                              "value": "[^\\r\\n]+"
+                            }
+                          }
                         }
-                      }
+                      ]
                     }
                   ]
                 }
@@ -179,6 +197,19 @@
           }
         ]
       }
+    },
+    "comment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\r\\n]+"
+        }
+      ]
     }
   },
   "extras": [
