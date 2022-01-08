@@ -18,16 +18,11 @@ module.exports = grammar({
     prompt: ($) =>
       seq(
         choice("iex", "..."),
-        optional(
-          seq(
-            token.immediate("("),
-            token.immediate(field("line", /\d+/)),
-            token.immediate(")")
-          )
-        ),
+        optional(seq(token.immediate(/\(\d+\)/))),
         token.immediate(">")
       ),
 
+    digit: ($) => /\d+/,
     expression: ($) => seq(ANYTHING, NEWLINE),
     result: ($) => token(prec(-1, ANYTHING)),
   },

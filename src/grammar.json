@@ -101,26 +101,8 @@
                 {
                   "type": "IMMEDIATE_TOKEN",
                   "content": {
-                    "type": "STRING",
-                    "value": "("
-                  }
-                },
-                {
-                  "type": "IMMEDIATE_TOKEN",
-                  "content": {
-                    "type": "FIELD",
-                    "name": "line",
-                    "content": {
-                      "type": "PATTERN",
-                      "value": "\\d+"
-                    }
-                  }
-                },
-                {
-                  "type": "IMMEDIATE_TOKEN",
-                  "content": {
-                    "type": "STRING",
-                    "value": ")"
+                    "type": "PATTERN",
+                    "value": "\\(\\d+\\)"
                   }
                 }
               ]
@@ -138,6 +120,10 @@
           }
         }
       ]
+    },
+    "digit": {
+      "type": "PATTERN",
+      "value": "\\d+"
     },
     "expression": {
       "type": "SEQ",
