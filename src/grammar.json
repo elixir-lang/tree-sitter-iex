@@ -12,54 +12,60 @@
           },
           {
             "type": "PATTERN",
-            "value": "[\\r?\\n]"
+            "value": "\\r?\\n"
           }
         ]
       }
     },
     "evaluation_block": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "REPEAT1",
-            "content": {
-              "type": "SYMBOL",
-              "name": "prompt_line"
-            }
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "result"
-                  },
-                  {
-                    "type": "PATTERN",
-                    "value": "[\\r?\\n]"
-                  }
-                ]
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "prompt_line": {
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "prompt"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_default_prompt_line"
+          },
+          "named": true,
+          "value": "prompt_line"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_cont_prompt_line"
+            },
+            "named": true,
+            "value": "prompt_line"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "result"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_default_prompt_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "iex(\\(\\d+\\))?>"
+          },
+          "named": true,
+          "value": "prompt"
         },
         {
           "type": "CHOICE",
@@ -69,55 +75,35 @@
               "name": "expression"
             },
             {
-              "type": "PATTERN",
-              "value": "[\\r?\\n]"
+              "type": "BLANK"
             }
           ]
         }
       ]
     },
-    "prompt": {
+    "_cont_prompt_line": {
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "iex"
-            },
-            {
-              "type": "STRING",
-              "value": "..."
-            }
-          ]
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\.\\.\\.(\\(\\d+\\))?>"
+          },
+          "named": true,
+          "value": "prompt"
         },
         {
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "IMMEDIATE_TOKEN",
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "\\(\\d+\\)"
-                  }
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "expression"
             },
             {
               "type": "BLANK"
             }
           ]
-        },
-        {
-          "type": "IMMEDIATE_TOKEN",
-          "content": {
-            "type": "STRING",
-            "value": ">"
-          }
         }
       ]
     },
@@ -130,7 +116,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "[\\r?\\n]"
+          "value": "\\r?\\n"
         }
       ]
     },

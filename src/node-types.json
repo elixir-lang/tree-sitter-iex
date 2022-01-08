@@ -24,11 +24,6 @@
     "fields": {}
   },
   {
-    "type": "prompt",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "prompt_line",
     "named": true,
     "fields": {},
@@ -63,16 +58,8 @@
     }
   },
   {
-    "type": "...",
-    "named": false
-  },
-  {
-    "type": ">",
-    "named": false
-  },
-  {
-    "type": "iex",
-    "named": false
+    "type": "prompt",
+    "named": true
   },
   {
     "type": "result",
