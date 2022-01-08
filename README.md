@@ -4,4 +4,4 @@ A [tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammar for Elixir's
 
 ## Status
 
-Just getting started...
+Seems to be working pretty well.
